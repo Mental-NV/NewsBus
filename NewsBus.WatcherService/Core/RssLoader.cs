@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml;
@@ -29,7 +28,7 @@ namespace NewsBus.WatcherService.Core
                 { 
                     ArticleId = item.Id, 
                     Url = item.Links?.FirstOrDefault()?.Uri, 
-                    Title = WebUtility.HtmlDecode(item.Title?.Text),
+                    Title = item.Title?.Text,
                     PublishDate = item.PublishDate,
                     Description = item.Summary?.Text
                 };

@@ -12,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NewsBus.Domain;
-using NewsBus.Infrastructure;
 using NewsBus.WatcherService.Core;
 using NewsBus.WatcherService.Services;
 
@@ -30,6 +29,8 @@ namespace NewsBus.WatcherService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -38,10 +39,9 @@ namespace NewsBus.WatcherService
 
             services.AddSingleton<IRssFeedRepository, RssFeedRepository>();
             services.AddSingleton<IRssLoader, RssLoader>();
-            string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
             services.AddSingleton<IDownloadQueueSender, DownloadQueueSender>(
                 sp => new DownloadQueueSender(queueConnectionString));
-            services.AddHostedService<SchedulerBackgroundService>();
+            // services.AddHostedService<SchedulerBackgroundService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

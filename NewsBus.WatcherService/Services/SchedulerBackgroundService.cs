@@ -30,6 +30,10 @@ namespace NewsBus.WatcherService.Services
                 IEnumerable<RssFeed> rssFeeds = await rssFeedRepository.GetItemsAsync();
                 foreach (RssFeed feed in rssFeeds)
                 {
+                    if (stoppingToken.IsCancellationRequested)
+                    {
+                        break;
+                    }
                     IEnumerable<MetaArticle> articles = await rssLoader.LoadAsync(feed.Url);
                     foreach (MetaArticle article in articles)
                     {
