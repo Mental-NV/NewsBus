@@ -19,12 +19,12 @@ namespace NewsBus.WatcherService.UnitTests
         public async Task LoadAsync_LoadRssFeed_Successfully()
         {
             IRssLoader rssLoader = new RssLoader();
-            IEnumerable<MetaArticle> result = await rssLoader.LoadAsync(new Uri("https://habr.com/en/rss/all/all"));
+            IEnumerable<Article> result = await rssLoader.LoadAsync(new Uri("https://habr.com/en/rss/all/all"));
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
-            foreach (MetaArticle article in result)
+            foreach (Article article in result)
             {
-                Assert.IsFalse(string.IsNullOrWhiteSpace(article.ArticleId));
+                Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
                 Assert.IsNotNull(article.Url);
                 Assert.IsFalse(string.IsNullOrWhiteSpace(article.Description));
                 Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));

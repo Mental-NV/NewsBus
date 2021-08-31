@@ -12,10 +12,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NewsBus.Domain;
-using NewsBus.WatcherService.Core;
-using NewsBus.WatcherService.Services;
+using NewsBus.DownloaderService.Core;
 
-namespace NewsBus.WatcherService
+namespace NewsBus.DownloaderService
 {
     public class Startup
     {
@@ -29,23 +28,17 @@ namespace NewsBus.WatcherService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
-            string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
-            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewsBus.WatcherService", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewsBus.DownloaderService", Version = "v1" });
             });
 
-            services.AddSingleton<IRssFeedRepository, RssFeedRepository>(
-                sp => new RssFeedRepository(cosmosConnectionString)
+            string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
+            // string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+            services.AddHostedService<DownloadBackgroundService>(sp =>
+                new DownloadBackgroundService(queueConnectionString, sp.GetService<IDownloadEventProcessor>())
             );
-            services.AddSingleton<IRssLoader, RssLoader>();
-            services.AddSingleton<IDownloadEventSender, DownloadEventSender>(
-                sp => new DownloadEventSender(queueConnectionString)
-            );
-            // services.AddHostedService<SchedulerBackgroundService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,10 +48,10 @@ namespace NewsBus.WatcherService
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => 
+                app.UseSwaggerUI(c =>
                 {
                     c.RoutePrefix = string.Empty;
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "NewsBus.WatcherService v1");
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "NewsBus.DownloaderService v1");
                 });
             }
 

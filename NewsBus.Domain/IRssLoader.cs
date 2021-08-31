@@ -7,6 +7,6 @@ namespace NewsBus.Domain
 {
     public interface IRssLoader
     {
-        Task<IEnumerable<MetaArticle>> LoadAsync(Uri rssFeedUrl);
+        Task<IEnumerable<Article>> LoadAsync(Uri rssFeedUrl);
     }
 }

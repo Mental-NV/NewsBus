@@ -24,7 +24,7 @@ namespace NewsBus.WatcherService.Controllers
         {
             IEnumerable<RssFeed> rssFeeds = await rssFeedRepository.GetItemsAsync();
             RssFeed rssFeed = rssFeeds.FirstOrDefault();
-            IEnumerable<MetaArticle> articles = await rssLoader.LoadAsync(rssFeed.Url);
+            IEnumerable<Article> articles = await rssLoader.LoadAsync(rssFeed.Url);
             return Json(articles);
         }
     }

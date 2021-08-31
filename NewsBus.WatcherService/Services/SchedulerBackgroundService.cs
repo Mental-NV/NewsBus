@@ -12,15 +12,15 @@ namespace NewsBus.WatcherService.Services
     {
         private readonly IRssFeedRepository rssFeedRepository;
         private readonly IRssLoader rssLoader;
-        private readonly IDownloadQueueSender downloadQueueSender;
+        private readonly IDownloadEventSender downloadEventSender;
 
         public SchedulerBackgroundService(IRssFeedRepository rssFeedRepository,
                                           IRssLoader rssLoader,
-                                          IDownloadQueueSender downloadQueueSender)
+                                          IDownloadEventSender downloadQueueSender)
         {
             this.rssFeedRepository = rssFeedRepository ?? throw new ArgumentNullException(nameof(rssFeedRepository));
             this.rssLoader = rssLoader ?? throw new ArgumentNullException(nameof(rssLoader));
-            this.downloadQueueSender = downloadQueueSender ?? throw new ArgumentNullException(nameof(downloadQueueSender));
+            this.downloadEventSender = downloadQueueSender ?? throw new ArgumentNullException(nameof(downloadQueueSender));
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -34,10 +34,10 @@ namespace NewsBus.WatcherService.Services
                     {
                         break;
                     }
-                    IEnumerable<MetaArticle> articles = await rssLoader.LoadAsync(feed.Url);
-                    foreach (MetaArticle article in articles)
+                    IEnumerable<Article> articles = await rssLoader.LoadAsync(feed.Url);
+                    foreach (Article article in articles)
                     {
-                        await downloadQueueSender.SendAsync(article);
+                        await downloadEventSender.SendAsync(article);
                     }
                 }
                 await Task.Delay(TimeSpan.FromMinutes(15));

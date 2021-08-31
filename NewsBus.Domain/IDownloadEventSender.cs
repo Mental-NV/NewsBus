@@ -5,8 +5,8 @@ using NewsBus.Domain.Models;
 
 namespace NewsBus.Domain
 {
-    public interface IDownloadQueueSender : IAsyncDisposable
+    public interface IDownloadEventSender
     {
-        Task SendAsync(MetaArticle article);
+        Task SendAsync(Article article);
     }
 }

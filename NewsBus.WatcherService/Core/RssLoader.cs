@@ -11,22 +11,22 @@ namespace NewsBus.WatcherService.Core
 {
     public class RssLoader : IRssLoader
     {
-        public Task<IEnumerable<MetaArticle>> LoadAsync(Uri rssFeedUrl)
+        public Task<IEnumerable<Article>> LoadAsync(Uri rssFeedUrl)
         {
             if (rssFeedUrl is null)
             {
                 throw new ArgumentNullException(nameof(rssFeedUrl));
             }
 
-            List<MetaArticle> result = new List<MetaArticle>();
+            List<Article> result = new List<Article>();
 
             using XmlReader reader = XmlReader.Create(rssFeedUrl.ToString());
             SyndicationFeed feed = SyndicationFeed.Load(reader);
             foreach (SyndicationItem item in feed.Items)
             {
-                var article = new MetaArticle() 
+                var article = new Article() 
                 { 
-                    ArticleId = item.Id, 
+                    Id = item.Id, 
                     Url = item.Links?.FirstOrDefault()?.Uri, 
                     Title = item.Title?.Text,
                     PublishDate = item.PublishDate,
@@ -34,7 +34,7 @@ namespace NewsBus.WatcherService.Core
                 };
                 result.Add(article);
             }
-            return Task.FromResult((IEnumerable<MetaArticle>)result);
+            return Task.FromResult((IEnumerable<Article>)result);
         }
     }
 }

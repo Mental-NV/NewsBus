@@ -9,14 +9,13 @@ using NewsBus.Domain.Models;
 
 namespace NewsBus.WatcherService.Core
 {
-    public class DownloadQueueSender : IDownloadQueueSender
+    public class DownloadEventSender : IDownloadEventSender, IAsyncDisposable
     {
-        private const string queueName = "downloadqueue";
         private readonly string queueConnectionString;
         private readonly ServiceBusClient client;
         private readonly ServiceBusSender sender;
 
-        public DownloadQueueSender(string queueConnectionString)
+        public DownloadEventSender(string queueConnectionString)
         {
             if (string.IsNullOrWhiteSpace(queueConnectionString))
             {
@@ -25,10 +24,10 @@ namespace NewsBus.WatcherService.Core
 
             this.queueConnectionString = queueConnectionString;
             client = new ServiceBusClient(queueConnectionString);
-            sender = client.CreateSender(queueName);
+            sender = client.CreateSender(Constants.DownloadQueue);
         }
 
-        public async Task SendAsync(MetaArticle article)
+        public async Task SendAsync(Article article)
         {
             string body = JsonSerializer.Serialize(article);
             ServiceBusMessage message = new ServiceBusMessage(body);
