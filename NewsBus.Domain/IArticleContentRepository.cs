@@ -4,7 +4,7 @@ namespace NewsBus.Domain
 {
     public interface IArticleContentRepository
     {
-        Task<string> GetContent(string id);
+        Task<string> GetContentAsync(string id);
         Task<bool> PostContentAsync(string id, string content);
     }
 }
