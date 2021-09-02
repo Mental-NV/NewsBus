@@ -9,13 +9,19 @@ namespace NewsBus.DownloaderService.Core
 {
     public class ArticleContentRepository : IArticleContentRepository
     {
-        const string containerName = "articleblobs";
+        // const string containerName = "articleblobs";
         private readonly BlobContainerClient container;
-        public ArticleContentRepository(string blobStorageConnectionString)
+
+        public ArticleContentRepository(string blobStorageConnectionString, string containerName)
         {
             if (string.IsNullOrWhiteSpace(blobStorageConnectionString))
             {
                 throw new System.ArgumentException($"'{nameof(blobStorageConnectionString)}' cannot be null or whitespace.", nameof(blobStorageConnectionString));
+            }
+
+            if (string.IsNullOrWhiteSpace(containerName))
+            {
+                throw new System.ArgumentException($"'{nameof(containerName)}' cannot be null or whitespace.", nameof(containerName));
             }
 
             container = new BlobContainerClient(blobStorageConnectionString, containerName);
@@ -39,6 +45,13 @@ namespace NewsBus.DownloaderService.Core
                     ContentType = "application/json"
                 });
             return true;
-        }  
+        }
+
+        public async Task<bool> DeleteContentAsync(string id)
+        {
+            BlobClient blob = container.GetBlobClient(id);
+            var response = await blob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots);
+            return response.Value;
+        }
     }
 }

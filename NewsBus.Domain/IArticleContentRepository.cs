@@ -6,5 +6,6 @@ namespace NewsBus.Domain
     {
         Task<string> GetContentAsync(string id);
         Task<bool> PostContentAsync(string id, string content);
+        Task<bool> DeleteContentAsync(string id);
     }
 }
