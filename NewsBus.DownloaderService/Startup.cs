@@ -35,10 +35,12 @@ namespace NewsBus.DownloaderService
             });
 
             string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
-            // string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
             services.AddHostedService<DownloadBackgroundService>(sp =>
                 new DownloadBackgroundService(queueConnectionString, sp.GetService<IDownloadEventProcessor>())
             );
+
+            string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+            services.AddSingleton<IArticleRepository, ArticleRepository>(sp => new ArticleRepository(cosmosConnectionString, Constants.ArticleDb, Constants.ArticleContainer));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
