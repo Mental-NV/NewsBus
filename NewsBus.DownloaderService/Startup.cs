@@ -34,13 +34,32 @@ namespace NewsBus.DownloaderService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewsBus.DownloaderService", Version = "v1" });
             });
 
+            string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+            services.AddSingleton<IArticleRepository, ArticleRepository>(
+                sp => new ArticleRepository(cosmosConnectionString, Constants.ArticleDb, Constants.ArticleContainer)
+            );
+
+            string blobStorageConnectionString = Environment.GetEnvironmentVariable("NewsBusStorageConnetionString", EnvironmentVariableTarget.Machine);
+            services.AddSingleton<IArticleContentRepository, ArticleContentRepository>(
+                sp => new ArticleContentRepository(blobStorageConnectionString, Constants.ArticleBlobs)
+            );
+
+            services.AddSingleton<IContentDownloader, ContentDownloader>();
+            services.AddSingleton<IContentParser, ContentParser>();
+
+            services.AddSingleton<IDownloadEventProcessor, DownloadEventProcessor>(
+                sp => new DownloadEventProcessor(
+                    sp.GetService<IArticleRepository>(),
+                    sp.GetService<IArticleContentRepository>(),
+                    sp.GetService<IContentDownloader>(),
+                    sp.GetService<IContentParser>()
+                )
+            );
+
             string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
             services.AddHostedService<DownloadBackgroundService>(sp =>
                 new DownloadBackgroundService(queueConnectionString, sp.GetService<IDownloadEventProcessor>())
             );
-
-            string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
-            services.AddSingleton<IArticleRepository, ArticleRepository>(sp => new ArticleRepository(cosmosConnectionString, Constants.ArticleDb, Constants.ArticleContainer));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

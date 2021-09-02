@@ -28,17 +28,19 @@ namespace NewsBus.DownloaderService.Core
             this.downloadProcessor = downloadProcessor ?? throw new System.ArgumentNullException(nameof(downloadProcessor));
         }
 
-        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             client = new ServiceBusClient(cosmosConnectionString);
             processor = client.CreateProcessor(Constants.DownloadQueue);
             processor.ProcessMessageAsync += MessageHandler;
             processor.ProcessErrorAsync += ErrorHandler; 
-            return Task.CompletedTask;
+            await processor.StartProcessingAsync(stoppingToken);
+            await Task.CompletedTask;
         }
 
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
+            await processor.StopProcessingAsync();
             await processor.DisposeAsync();
             await client.DisposeAsync();
         }
@@ -49,6 +51,7 @@ namespace NewsBus.DownloaderService.Core
             Article article = await JsonSerializer.DeserializeAsync<Article>(bodyStream);
             await downloadProcessor.Process(article);
             await args.CompleteMessageAsync(args.Message);
+            Trace.TraceInformation($"Processed article {article.Id}");
         }
 
         protected Task ErrorHandler(ProcessErrorEventArgs args)

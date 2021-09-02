@@ -46,7 +46,7 @@ namespace NewsBus.WatcherService
             services.AddSingleton<IDownloadEventSender, DownloadEventSender>(
                 sp => new DownloadEventSender(queueConnectionString)
             );
-            // services.AddHostedService<SchedulerBackgroundService>();
+            services.AddHostedService<SchedulerBackgroundService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
