@@ -5,9 +5,11 @@ using System.Net;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml;
+using FluentValidation.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewsBus.Contracts;
 using NewsBus.Contracts.Models;
+using NewsBus.Contracts.Validators;
 using NewsBus.WatcherService.Core;
 
 namespace NewsBus.WatcherService.Tests
@@ -19,7 +21,8 @@ namespace NewsBus.WatcherService.Tests
         public async Task LoadAsync_LoadRssFeed_Successfully()
         {
             // Arrange
-            IRssLoader rssLoader = new RssLoader();
+            IArticleIdGenerator idGenerator = new ArticleIdGenerator();
+            IRssLoader rssLoader = new RssLoader(idGenerator);
 
             // Act
             IEnumerable<Article> result = await rssLoader.LoadAsync(new Uri("https://habr.com/en/rss/all/all"));
@@ -27,13 +30,11 @@ namespace NewsBus.WatcherService.Tests
             // Assert
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
+            ArticleValidator validator = new ArticleValidator();
             foreach (Article article in result)
             {
-                Assert.IsFalse(string.IsNullOrWhiteSpace(article.Id));
-                Assert.IsNotNull(article.Url);
-                Assert.IsFalse(string.IsNullOrWhiteSpace(article.Description));
-                Assert.IsFalse(string.IsNullOrWhiteSpace(article.Title));
-                Assert.IsTrue(article.PublishDate > DateTimeOffset.UnixEpoch);
+                ValidationResult valid = validator.Validate(article);
+                Assert.IsTrue(valid.IsValid, valid?.Errors?.FirstOrDefault()?.ErrorMessage);
             }
         }
     }

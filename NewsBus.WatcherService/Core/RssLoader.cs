@@ -1,16 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml;
 using NewsBus.Contracts;
 using NewsBus.Contracts.Models;
+using NewsBus.Contracts.Validators;
 
 namespace NewsBus.WatcherService.Core
 {
     public class RssLoader : IRssLoader
     {
+        private readonly IArticleIdGenerator idGenerator;
+
+        public RssLoader(IArticleIdGenerator idGenerator)
+        {
+            this.idGenerator = idGenerator ?? throw new ArgumentNullException(nameof(idGenerator));
+        }
+
         public Task<IEnumerable<Article>> LoadAsync(Uri rssFeedUrl)
         {
             if (rssFeedUrl is null)
@@ -19,20 +28,32 @@ namespace NewsBus.WatcherService.Core
             }
 
             List<Article> result = new List<Article>();
+            ArticleValidator validator = new ArticleValidator();
 
             using XmlReader reader = XmlReader.Create(rssFeedUrl.ToString());
             SyndicationFeed feed = SyndicationFeed.Load(reader);
+
             foreach (SyndicationItem item in feed.Items)
             {
+                Uri url = ArticleValidator.ValidateUrl(item.Id) ?? item.Links?.FirstOrDefault()?.Uri;
+                string id = idGenerator.Convert(url.ToString()).ToString();
                 var article = new Article() 
                 { 
-                    Id = item.Id, 
-                    Url = item.Links?.FirstOrDefault()?.Uri, 
+                    Id = id, 
+                    Url = url, 
                     Title = item.Title?.Text,
                     PublishDate = item.PublishDate,
                     Description = item.Summary?.Text
                 };
-                result.Add(article);
+                var validationResult = validator.Validate(article);
+                if (validationResult.IsValid)
+                {
+                    result.Add(article);
+                }
+                else
+                {
+                    Trace.TraceWarning($"Article with url '{article.Url}' isn't valid: {validationResult?.Errors?.FirstOrDefault()?.ErrorMessage}");
+                }
             }
             return Task.FromResult((IEnumerable<Article>)result);
         }
