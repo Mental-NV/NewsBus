@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using NewsBus.Domain;
-using NewsBus.Domain.Models;
+using NewsBus.Contracts;
+using NewsBus.Contracts.Models;
 
 namespace NewsBus.DownloaderService.Core
 {

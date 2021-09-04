@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
-using NewsBus.Domain;
-using NewsBus.Domain.Models;
+using NewsBus.Contracts;
+using NewsBus.Contracts.Models;
 
 namespace NewsBus.DownloaderService.Core
 {

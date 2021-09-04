@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using NewsBus.Domain;
+using NewsBus.Contracts;
 
 namespace NewsBus.DownloaderService.Core
 {

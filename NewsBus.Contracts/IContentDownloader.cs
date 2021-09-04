@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace NewsBus.Domain
+namespace NewsBus.Contracts
 {
     public interface IContentDownloader
     {

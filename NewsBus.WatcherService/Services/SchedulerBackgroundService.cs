@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
-using NewsBus.Domain;
-using NewsBus.Domain.Models;
+using NewsBus.Contracts;
+using NewsBus.Contracts.Models;
 
 namespace NewsBus.WatcherService.Services
 {

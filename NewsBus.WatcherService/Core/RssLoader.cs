@@ -4,8 +4,8 @@ using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml;
-using NewsBus.Domain;
-using NewsBus.Domain.Models;
+using NewsBus.Contracts;
+using NewsBus.Contracts.Models;
 
 namespace NewsBus.WatcherService.Core
 {

@@ -3,7 +3,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using NewsBus.Domain;
+using NewsBus.Contracts;
 
 namespace NewsBus.DownloaderService.Core
 {

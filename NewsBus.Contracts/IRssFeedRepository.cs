@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NewsBus.Domain.Models;
+using NewsBus.Contracts.Models;
 
-namespace NewsBus.Domain
+namespace NewsBus.Contracts
 {
     public interface IRssFeedRepository
     {

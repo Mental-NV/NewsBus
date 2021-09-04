@@ -1,4 +1,4 @@
-namespace NewsBus.Domain
+namespace NewsBus.Contracts
 {
     public static class Constants
     {

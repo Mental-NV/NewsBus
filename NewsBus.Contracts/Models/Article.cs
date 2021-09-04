@@ -2,7 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
-namespace NewsBus.Domain.Models
+namespace NewsBus.Contracts.Models
 {
     public class Article
     {

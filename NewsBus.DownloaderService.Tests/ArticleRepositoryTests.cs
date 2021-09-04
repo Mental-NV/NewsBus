@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NewsBus.Domain;
-using NewsBus.Domain.Models;
+using NewsBus.Contracts;
+using NewsBus.Contracts.Models;
 using NewsBus.DownloaderService.Core;
 
 namespace NewsBus.DownloaderService.Tests
