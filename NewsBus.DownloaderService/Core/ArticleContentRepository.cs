@@ -9,7 +9,6 @@ namespace NewsBus.DownloaderService.Core
 {
     public class ArticleContentRepository : IArticleContentRepository
     {
-        // const string containerName = "articleblobs";
         private readonly BlobContainerClient container;
 
         public ArticleContentRepository(string blobStorageConnectionString, string containerName)

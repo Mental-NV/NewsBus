@@ -9,14 +9,10 @@ namespace NewsBus.WatcherService.Core
 {
     public class RssFeedRepository : IRssFeedRepository
     {
-        const string DataBaseId = "NewsBusDb";
-        const string ContainerId = "RssFeeds";
         private readonly string cosmosDbConnectionString;
-        private readonly CosmosClient client;
-        private readonly Database database;
         private readonly Container container;
 
-        public RssFeedRepository(string cosmosDbConnectionString)
+        public RssFeedRepository(string cosmosDbConnectionString, string databaseId, string containerId)
         {
             if (string.IsNullOrWhiteSpace(cosmosDbConnectionString))
             {
@@ -24,9 +20,9 @@ namespace NewsBus.WatcherService.Core
             }
 
             this.cosmosDbConnectionString = cosmosDbConnectionString;
-            client = new CosmosClient(cosmosDbConnectionString);
-            database = client.GetDatabase(DataBaseId);
-            container = database.GetContainer(ContainerId);
+            CosmosClient client = new CosmosClient(cosmosDbConnectionString);
+            Database database = client.GetDatabase(databaseId);
+            container = database.GetContainer(containerId);
         }
 
         public async Task<IEnumerable<RssFeed>> GetItemsAsync()

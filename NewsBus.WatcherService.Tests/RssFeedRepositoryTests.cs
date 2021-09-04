@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NewsBus.Domain;
 using NewsBus.Domain.Models;
 using NewsBus.WatcherService.Core;
 
@@ -12,13 +13,16 @@ namespace NewsBus.WatcherService.Tests
     public class RssFeedRepositoryTests
     {
         [TestMethod]
-        public async Task GetItems_GetItems_Successfully()
+        public async Task GetItems_GetItemsFromDb_GotValidItems()
         {
+            // Arrange
             string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
-            var target = new RssFeedRepository(cosmosConnectionString);
+            var target = new RssFeedRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.RssFeedsContainer);
 
+            // Act
             IEnumerable<RssFeed> actual = await target.GetItemsAsync();
 
+            // Assert
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
             foreach (var item in actual)

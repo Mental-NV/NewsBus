@@ -40,7 +40,7 @@ namespace NewsBus.WatcherService
             });
 
             services.AddSingleton<IRssFeedRepository, RssFeedRepository>(
-                sp => new RssFeedRepository(cosmosConnectionString)
+                sp => new RssFeedRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.RssFeedsContainer)
             );
             services.AddSingleton<IRssLoader, RssLoader>();
             services.AddSingleton<IDownloadEventSender, DownloadEventSender>(

@@ -18,8 +18,13 @@ namespace NewsBus.WatcherService.Tests
         [TestMethod]
         public async Task LoadAsync_LoadRssFeed_Successfully()
         {
+            // Arrange
             IRssLoader rssLoader = new RssLoader();
+
+            // Act
             IEnumerable<Article> result = await rssLoader.LoadAsync(new Uri("https://habr.com/en/rss/all/all"));
+
+            // Assert
             Assert.IsNotNull(result);
             Assert.IsTrue(result.Any());
             foreach (Article article in result)

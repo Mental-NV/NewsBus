@@ -36,7 +36,7 @@ namespace NewsBus.DownloaderService
 
             string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
             services.AddSingleton<IArticleRepository, ArticleRepository>(
-                sp => new ArticleRepository(cosmosConnectionString, Constants.ArticleDb, Constants.ArticleContainer)
+                sp => new ArticleRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.ArticlesContainer)
             );
 
             string blobStorageConnectionString = Environment.GetEnvironmentVariable("NewsBusStorageConnetionString", EnvironmentVariableTarget.Machine);
