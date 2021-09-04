@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Domain", "NewsBus.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService", "NewsBus.WatcherService\NewsBus.WatcherService.csproj", "{E511AD78-2ADD-4ECD-8583-C1A42EC276EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService.UnitTests", "NewsBus.WatcherService.UnitTests\NewsBus.WatcherService.UnitTests.csproj", "{1CB59EB4-8D5B-484F-B49D-431B32439EF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService.Tests", "NewsBus.WatcherService.Tests\NewsBus.WatcherService.Tests.csproj", "{1CB59EB4-8D5B-484F-B49D-431B32439EF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService", "NewsBus.DownloaderService\NewsBus.DownloaderService.csproj", "{3CCEA824-0693-4B7B-BBF7-B8678D7700E0}"
 EndProject

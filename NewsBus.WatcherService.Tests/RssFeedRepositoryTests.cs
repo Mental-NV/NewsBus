@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewsBus.Domain.Models;
 using NewsBus.WatcherService.Core;
 
-namespace NewsBus.WatcherService.UnitTests
+namespace NewsBus.WatcherService.Tests
 {
     [TestClass]
     public class RssFeedRepositoryTests
