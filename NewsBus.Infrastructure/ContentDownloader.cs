@@ -8,6 +8,7 @@ namespace NewsBus.Infrastructure
     public class ContentDownloader : IContentDownloader, IDisposable
     {
         private readonly HttpClient client;
+        private bool isDisposed = false;
         public ContentDownloader()
         {
             client = new HttpClient();
@@ -20,9 +21,21 @@ namespace NewsBus.Infrastructure
             return await response.Content.ReadAsStringAsync();
         }
 
+        protected void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                client.Dispose();
+            }
+        }
+
         public void Dispose()
         {
-            client?.Dispose();
+            if (!isDisposed)
+            {
+                Dispose(true);
+            }
+            isDisposed = true;
         }
     }
 }
