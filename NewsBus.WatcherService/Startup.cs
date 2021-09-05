@@ -43,6 +43,7 @@ namespace NewsBus.WatcherService
             services.AddSingleton<IRssFeedRepository, RssFeedRepository>(
                 sp => new RssFeedRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.RssFeedsContainer)
             );
+            services.AddSingleton<IArticleIdGenerator, ArticleIdGenerator>();
             services.AddSingleton<IRssLoader, RssLoader>();
             services.AddSingleton<IDownloadEventSender, DownloadEventSender>(
                 sp => new DownloadEventSender(queueConnectionString)
