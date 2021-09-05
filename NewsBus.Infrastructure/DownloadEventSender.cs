@@ -15,6 +15,7 @@ namespace NewsBus.Infrastructure
         private readonly string queueConnectionString;
         private readonly ServiceBusClient client;
         private readonly ServiceBusSender sender;
+        private bool isDisposed = false;
 
         public DownloadEventSender(string queueConnectionString)
         {
@@ -35,11 +36,23 @@ namespace NewsBus.Infrastructure
             await sender.SendMessageAsync(message);
         }
 
+        public async ValueTask DisposeAsync(bool disposing)
+        {
+            if (disposing)
+            {
+                await client.DisposeAsync();
+                await sender.DisposeAsync();
+            }
+        }
+
         public async ValueTask DisposeAsync()
         {
-            await client.DisposeAsync();
-            await sender.DisposeAsync();
-            GC.SuppressFinalize(this);
+            if (!isDisposed)
+            {
+                await DisposeAsync(true);
+                GC.SuppressFinalize(this);
+            }
+            isDisposed = true;
         }
     }
 }
