@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using NewsBus.Contracts;
+using NewsBus.Application.Interfaces;
 
-namespace NewsBus.DownloaderService.Core
+namespace NewsBus.Infrastructure
 {
     public class ContentParser : IContentParser
     {

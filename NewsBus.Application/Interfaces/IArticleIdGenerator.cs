@@ -1,6 +1,6 @@
 using System;
 
-namespace NewsBus.Contracts
+namespace NewsBus.Application.Interfaces
 {
     /// <summary>
     /// Generates an unique guid based on a given article url by a hash algorithm

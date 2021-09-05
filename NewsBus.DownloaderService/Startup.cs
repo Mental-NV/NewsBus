@@ -11,8 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using NewsBus.Contracts;
-using NewsBus.DownloaderService.Core;
+using NewsBus.Application;
+using NewsBus.Application.Interfaces;
+using NewsBus.Infrastructure;
 
 namespace NewsBus.DownloaderService
 {

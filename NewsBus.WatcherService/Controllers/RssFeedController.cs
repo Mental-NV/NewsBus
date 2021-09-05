@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
 
 namespace NewsBus.WatcherService.Controllers
 {

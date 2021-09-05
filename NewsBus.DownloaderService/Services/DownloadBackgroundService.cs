@@ -5,10 +5,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Hosting;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
+using NewsBus.Application;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.DownloaderService.Core
+namespace NewsBus.Infrastructure
 {
     public class DownloadBackgroundService : BackgroundService
     {

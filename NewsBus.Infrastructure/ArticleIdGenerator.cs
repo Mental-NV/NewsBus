@@ -1,9 +1,9 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using NewsBus.Contracts;
+using NewsBus.Application.Interfaces;
 
-namespace NewsBus.WatcherService.Core
+namespace NewsBus.Infrastructure
 {
     /// <summary>
     /// Generates an unique guid based on a given article url by a hash algorithm

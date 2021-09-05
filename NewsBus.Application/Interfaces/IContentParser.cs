@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace NewsBus.Contracts
+namespace NewsBus.Application.Interfaces
 {
     public interface IContentParser
     {

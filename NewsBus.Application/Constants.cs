@@ -1,4 +1,4 @@
-namespace NewsBus.Contracts
+namespace NewsBus.Application
 {
     public static class Constants
     {

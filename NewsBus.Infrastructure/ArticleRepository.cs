@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.DownloaderService.Core
+namespace NewsBus.Infrastructure
 {
     /// <summary>
     /// Represents data access to the article repository

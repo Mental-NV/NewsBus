@@ -2,7 +2,7 @@ using System;
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
-namespace NewsBus.Contracts.Models
+namespace NewsBus.Domain.Models
 {
     public class RssFeed
     {

@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.DownloaderService.Core
+namespace NewsBus.Infrastructure
 {
     public class DownloadEventProcessor : IDownloadEventProcessor
     {

@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NewsBus.Contracts;
-using NewsBus.WatcherService.Core;
+using NewsBus.Application.Interfaces;
+using NewsBus.Infrastructure;
 
 namespace NewsBus.WatcherService.Tests
 {

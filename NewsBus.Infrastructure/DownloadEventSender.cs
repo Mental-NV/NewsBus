@@ -4,10 +4,11 @@ using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Azure.Messaging.ServiceBus;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
+using NewsBus.Application;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.WatcherService.Core
+namespace NewsBus.Infrastructure
 {
     public class DownloadEventSender : IDownloadEventSender, IAsyncDisposable
     {

@@ -3,9 +3,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using NewsBus.Contracts;
+using NewsBus.Application.Interfaces;
 
-namespace NewsBus.DownloaderService.Core
+namespace NewsBus.Infrastructure
 {
     public class ArticleContentRepository : IArticleContentRepository
     {

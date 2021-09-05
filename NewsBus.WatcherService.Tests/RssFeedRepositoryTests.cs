@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
-using NewsBus.WatcherService.Core;
+using NewsBus.Application;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
+using NewsBus.Infrastructure;
 
 namespace NewsBus.WatcherService.Tests
 {

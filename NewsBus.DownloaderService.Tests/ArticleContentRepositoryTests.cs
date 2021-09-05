@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NewsBus.DownloaderService.Core;
+using NewsBus.Infrastructure;
 
 namespace NewsBus.DownloaderService.Tests
 {

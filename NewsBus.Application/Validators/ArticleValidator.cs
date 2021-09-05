@@ -1,8 +1,8 @@
 using System;
 using FluentValidation;
-using NewsBus.Contracts.Models;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.Contracts.Validators
+namespace NewsBus.Application.Validators
 {
     public class ArticleValidator : AbstractValidator<Article>
     {

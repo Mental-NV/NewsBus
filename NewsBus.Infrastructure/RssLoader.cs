@@ -5,11 +5,11 @@ using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
-using NewsBus.Contracts.Validators;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
+using NewsBus.Application.Validators;
 
-namespace NewsBus.WatcherService.Core
+namespace NewsBus.Infrastructure
 {
     public class RssLoader : IRssLoader
     {

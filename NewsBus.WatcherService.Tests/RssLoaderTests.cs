@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Xml;
 using FluentValidation.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
-using NewsBus.Contracts.Validators;
-using NewsBus.WatcherService.Core;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
+using NewsBus.Application.Validators;
+using NewsBus.Infrastructure;
 
 namespace NewsBus.WatcherService.Tests
 {

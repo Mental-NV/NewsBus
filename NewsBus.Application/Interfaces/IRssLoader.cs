@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NewsBus.Contracts.Models;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.Contracts
+namespace NewsBus.Application.Interfaces
 {
     public interface IRssLoader
     {

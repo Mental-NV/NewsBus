@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
-using NewsBus.Contracts;
-using NewsBus.Contracts.Models;
+using NewsBus.Application.Interfaces;
+using NewsBus.Domain.Models;
 
-namespace NewsBus.WatcherService.Core
+namespace NewsBus.Infrastructure
 {
     public class RssFeedRepository : IRssFeedRepository
     {
