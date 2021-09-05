@@ -7,7 +7,7 @@ It is a sample project that illustrates how to achive a scallable architecture b
 * ASP.NET Core
 * Docker
 * [To be done] Azure Kubernetes Service
-### Project description
+### Projects description
 * NewsBus.Domain — domain layer
 * NewsBus.Application — business layer
 * NewsBus.Infrastructure — infrastructure layer
