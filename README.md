@@ -1,5 +1,5 @@
 # NewsBus
-NewBus is a news aggregation portal, similar to https://feedly.com/.
+NewsBus is a news aggregation portal, similar to https://feedly.com/.
 It is a sample project that illustrates how to achive a scallable architecture by using the following technologies:
 * Azure Service Bus
 * Azure Cosmos DB
