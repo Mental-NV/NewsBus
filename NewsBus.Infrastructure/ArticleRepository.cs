@@ -116,6 +116,31 @@ namespace NewsBus.Infrastructure
         }
 
         /// <summary>
+        /// Check if the article is already exist in the repository
+        /// </summary>
+        /// <param name="id">the article id</param>
+        /// <returns>true if the article exists</returns>
+        public async Task<bool> Exist(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentException($"'{nameof(id)}' cannot be null or whitespace.", nameof(id));
+            }
+
+            string sqlQuery = $"SELECT VALUE count(1) FROM c WHERE c.id = @id";
+            QueryDefinition queryDefinition = new QueryDefinition(sqlQuery)
+                .WithParameter("@id", id);
+            FeedIterator<int> iterator = container.GetItemQueryIterator<int>(queryDefinition);
+            
+            int count = 0;
+            while (iterator.HasMoreResults)
+            {
+                count = (await iterator.ReadNextAsync()).SingleOrDefault();
+            }
+            return count > 0;
+        }
+
+        /// <summary>
         /// Real an article from the repository
         /// </summary>
         /// <param name="id">the article id</param>

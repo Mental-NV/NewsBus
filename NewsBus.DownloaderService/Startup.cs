@@ -19,9 +19,10 @@ namespace NewsBus.DownloaderService
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         public IConfiguration Configuration { get; }
@@ -52,15 +53,17 @@ namespace NewsBus.DownloaderService
 
             services.AddSingleton<IDownloadEventProcessor, DownloadEventProcessor>(
                 sp => new DownloadEventProcessor(
-                    sp.GetService<IArticleRepository>(),
-                    sp.GetService<IArticleContentRepository>(),
-                    sp.GetService<IContentDownloader>(),
-                    sp.GetService<IContentParser>()
+                    sp.GetRequiredService<IArticleRepository>(),
+                    sp.GetRequiredService<IArticleContentRepository>(),
+                    sp.GetRequiredService<IContentDownloader>(),
+                    sp.GetRequiredService<IContentParser>()
                 )
             );
 
             services.AddHostedService<DownloadBackgroundService>(sp =>
-                new DownloadBackgroundService(queueConnectionString, sp.GetService<IDownloadEventProcessor>())
+                new DownloadBackgroundService(queueConnectionString,
+                sp.GetRequiredService<IDownloadEventProcessor>(),
+                sp.GetRequiredService<ILogger<DownloadBackgroundService>>())
             );
         }
 

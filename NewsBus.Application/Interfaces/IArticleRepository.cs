@@ -23,12 +23,19 @@ namespace NewsBus.Application.Interfaces
         Task<Article> GetArticleAsync(string id);
 
         /// <summary>
-        /// Real an article from the repository
+        /// Read an article from the repository
         /// </summary>
         /// <param name="id">the article id</param>
         /// <param name="url">the article url (partition key)</param>
         /// <returns>the article data model</returns>
         Task<Article> GetArticleAsync(string id, string url);
+
+        /// <summary>
+        /// Check if the article is already exist in the repository
+        /// </summary>
+        /// <param name="id">the article id</param>
+        /// <returns>true if the article exists</returns>
+        Task<bool> Exist(string id);
 
         /// <summary>
         /// Create a new article in the repository

@@ -47,6 +47,29 @@ namespace NewsBus.DownloaderService.Tests
         }
 
         [TestMethod]
+        public async Task ExistArticleAsync_PostAndCheckExisting_Success()
+        {
+            // Arrange
+            Article expected = GenerateArticle();
+            try
+            {
+                // Act
+                bool postResult = await sut.PostArticleAsync(expected);
+                Assert.IsTrue(postResult);
+                
+                // Assert
+                bool actual = await sut.Exist(expected.Id);
+                Assert.IsTrue(actual);
+            }
+            finally
+            {
+                // Clean up
+                bool deleteResult = await sut.DeleteArticleAsync(expected.Id, expected.Url.ToString());
+                Assert.IsTrue(deleteResult);
+            }
+        }
+
+        [TestMethod]
         public async Task PutArticleAsync_PostPutAndReadV2_Success()
         {
             Article expected = GenerateArticle();

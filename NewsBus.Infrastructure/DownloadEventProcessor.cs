@@ -26,10 +26,14 @@ namespace NewsBus.Infrastructure
         {
             string articleContent = await downloader.GetAsync(article.Url);
             articleContent = await parser.ProcessAsync(articleContent);
-            bool success = await articleContentRepository.PostContentAsync(article.Id, articleContent);
-            if (success)
+            
+            if (!await articleRepository.Exist(article.Id))
             {
-                await articleRepository.PostArticleAsync(article);
+                bool success = await articleContentRepository.PostContentAsync(article.Id, articleContent);
+                if (success)
+                {
+                    await articleRepository.PostArticleAsync(article);
+                }
             }
         }
     }
