@@ -8,6 +8,10 @@ services:
     build:
       context: .
       dockerfile: NewsBus.WatcherService/Dockerfile
-    ports:
-      - 5000:5000
-      - 5001:5001
+
+  newsbusdownloaderservice:
+    image: newsbusdownloaderservice
+    build:
+      context: .
+      dockerfile: NewsBus.DownloaderService/Dockerfile
+

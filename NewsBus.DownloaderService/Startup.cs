@@ -35,14 +35,16 @@ namespace NewsBus.DownloaderService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewsBus.DownloaderService", Version = "v1" });
             });
 
-            string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+            string queueConnectionString = Configuration["Env:NewsBusQueueConnectionString"];
+            string cosmosConnectionString = Configuration["Env:NewsBusCosmosDbConnectionString"];
+            string storageConnectionString = Configuration["Env:NewsBusStorageConnetionString"];
+
             services.AddSingleton<IArticleRepository, ArticleRepository>(
                 sp => new ArticleRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.ArticlesContainer)
             );
 
-            string blobStorageConnectionString = Environment.GetEnvironmentVariable("NewsBusStorageConnetionString", EnvironmentVariableTarget.Machine);
             services.AddSingleton<IArticleContentRepository, ArticleContentRepository>(
-                sp => new ArticleContentRepository(blobStorageConnectionString, Constants.ArticleBlobs)
+                sp => new ArticleContentRepository(storageConnectionString, Constants.ArticleBlobs)
             );
 
             services.AddSingleton<IContentDownloader, ContentDownloader>();
@@ -57,7 +59,6 @@ namespace NewsBus.DownloaderService
                 )
             );
 
-            string queueConnectionString = Environment.GetEnvironmentVariable("NewsBusQueueConnectionString", EnvironmentVariableTarget.Machine);
             services.AddHostedService<DownloadBackgroundService>(sp =>
                 new DownloadBackgroundService(queueConnectionString, sp.GetService<IDownloadEventProcessor>())
             );
