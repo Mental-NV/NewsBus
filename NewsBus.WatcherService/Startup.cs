@@ -30,9 +30,9 @@ namespace NewsBus.WatcherService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string queueConnectionString = Configuration["Env:NewsBusQueueConnectionString"];
-            string cosmosConnectionString = Configuration["Env:NewsBusCosmosDbConnectionString"];
-            string storageConnectionString = Configuration["Env:NewsBusStorageConnetionString"];
+            string queueConnectionString = Configuration["NewsBusQueueConnectionString"];
+            string cosmosConnectionString = Configuration["NewsBusCosmosDbConnectionString"];
+            string storageConnectionString = Configuration["NewsBusStorageConnetionString"];
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

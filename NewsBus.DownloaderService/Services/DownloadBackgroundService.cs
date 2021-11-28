@@ -10,7 +10,7 @@ using NewsBus.Application;
 using NewsBus.Application.Interfaces;
 using NewsBus.Domain.Models;
 
-namespace NewsBus.Infrastructure
+namespace NewsBus.DownloaderService
 {
     public class DownloadBackgroundService : BackgroundService
     {
@@ -58,7 +58,6 @@ namespace NewsBus.Infrastructure
             Article article = await JsonSerializer.DeserializeAsync<Article>(bodyStream);
             await downloadProcessor.Process(article);
             await args.CompleteMessageAsync(args.Message);
-            logger.LogInformation($"Processed article {article.Id}");
         }
 
         protected Task ErrorHandler(ProcessErrorEventArgs args)

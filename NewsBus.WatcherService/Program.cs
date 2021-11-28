@@ -18,6 +18,10 @@ namespace NewsBus.WatcherService
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(loggingBuilder => {
+                    loggingBuilder.ClearProviders();
+                    loggingBuilder.AddConsole();
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
