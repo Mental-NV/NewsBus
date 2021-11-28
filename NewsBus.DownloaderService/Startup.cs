@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NewsBus.Application;
 using NewsBus.Application.Interfaces;
+using NewsBus.DownloaderService.Services;
 using NewsBus.Infrastructure;
 
 namespace NewsBus.DownloaderService

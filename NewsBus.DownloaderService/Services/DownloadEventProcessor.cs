@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using NewsBus.Application.Interfaces;
 using NewsBus.Domain.Models;
 
-namespace NewsBus.DownloaderService
+namespace NewsBus.DownloaderService.Services
 {
     public class DownloadEventProcessor : IDownloadEventProcessor
     {
