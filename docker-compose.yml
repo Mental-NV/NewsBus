@@ -8,10 +8,23 @@ services:
     build:
       context: .
       dockerfile: NewsBus.WatcherService/Dockerfile
+    environment:
+      - "NewsBusCosmosDbConnectionString=${NewsBusCosmosDbConnectionString}"
+      - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
+      - "NewsBusStorageConnetionString=${NewsBusStorageConnetionString}"
+    ports:
+      - 5002:5000
+      - 5003:5001
 
   newsbusdownloaderservice:
     image: newsbusdownloaderservice
     build:
       context: .
       dockerfile: NewsBus.DownloaderService/Dockerfile
-
+    environment:
+      - "NewsBusCosmosDbConnectionString=${NewsBusCosmosDbConnectionString}"
+      - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
+      - "NewsBusStorageConnetionString=${NewsBusStorageConnetionString}"
+    ports:
+      - 5000:5000
+      - 5001:5001

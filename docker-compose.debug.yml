@@ -10,12 +10,6 @@ services:
       dockerfile: NewsBus.WatcherService/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "NewsBusCosmosDbConnectionString=${NewsBusCosmosDbConnectionString}"
-      - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
-      - "NewsBusStorageConnetionString=${NewsBusStorageConnetionString}"
-    ports:
-      - 5002:5000
-      - 5003:5001
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 
@@ -26,11 +20,5 @@ services:
       dockerfile: NewsBus.DownloaderService/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "NewsBusCosmosDbConnectionString=${NewsBusCosmosDbConnectionString}"
-      - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
-      - "NewsBusStorageConnetionString=${NewsBusStorageConnetionString}"
-    ports:
-      - 5000:5000
-      - 5001:5001
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
