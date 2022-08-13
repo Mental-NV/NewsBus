@@ -23,7 +23,7 @@ namespace NewsBus.DownloaderService.Tests
             sut = new ArticleRepository(cosmosConnectionString, TestArticleDb, TestArticleContainer);
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task PostArticleAsync_PostAndRead_Success()
         {
             // Arrange
@@ -46,7 +46,7 @@ namespace NewsBus.DownloaderService.Tests
             }
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task ExistArticleAsync_PostAndCheckExisting_Success()
         {
             // Arrange
@@ -69,7 +69,7 @@ namespace NewsBus.DownloaderService.Tests
             }
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task PutArticleAsync_PostPutAndReadV2_Success()
         {
             Article expected = GenerateArticle();

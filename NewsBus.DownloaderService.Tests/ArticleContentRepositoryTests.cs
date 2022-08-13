@@ -16,7 +16,7 @@ namespace NewsBus.DownloaderService.Tests
             sut = new ArticleContentRepository(storageConnectionString, "integrationtests");
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task PostContentAsync_CreateReadAndDeleteTheBlob_AllSuccessful()
         {
             string id = Guid.NewGuid().ToString();
