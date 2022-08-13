@@ -24,7 +24,7 @@ namespace NewsBus.WatcherService.Tests
             }
             if (string.IsNullOrWhiteSpace(cosmosConnectionString))
             {
-                cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.m);
+                cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Machine);
             }
             var target = new RssFeedRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.RssFeedsContainer);
 
