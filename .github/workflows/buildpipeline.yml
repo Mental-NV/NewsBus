@@ -2,9 +2,6 @@ name: build pipeline
 
 on: [push]
 
-env:
-  NEWSBUSCOSMOSDBCONNECTIONSTRING: '${{ secrets.NEWSBUSCOSMOSDBCONNECTIONSTRING }}'
-
 jobs:
   build:
 
@@ -25,3 +22,5 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Test
         run: dotnet test --no-restore --verbosity normal
+        env:
+          NEWSBUSCOSMOSDBCONNECTIONSTRING: '${{ secrets.NEWSBUSCOSMOSDBCONNECTIONSTRING }}'
