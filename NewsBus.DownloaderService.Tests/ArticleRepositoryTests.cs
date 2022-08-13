@@ -10,7 +10,7 @@ namespace NewsBus.DownloaderService.Tests
     /// <summary>
     /// Integration tests for the article repository
     /// </summary>
-    [TestClass]
+    // [TestClass]
     public class ArticleRepositoryTests
     {
         private readonly string cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Machine);

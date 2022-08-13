@@ -5,7 +5,7 @@ using NewsBus.Infrastructure;
 
 namespace NewsBus.DownloaderService.Tests
 {
-    [TestClass]
+    // [TestClass]
     public class ArticleContentRepositoryTests
     {
         private readonly ArticleContentRepository sut;
