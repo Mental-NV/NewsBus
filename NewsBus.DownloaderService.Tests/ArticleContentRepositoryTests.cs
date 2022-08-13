@@ -5,18 +5,18 @@ using NewsBus.Infrastructure;
 
 namespace NewsBus.DownloaderService.Tests
 {
-    [TestClass]
+    // [TestClass]
     public class ArticleContentRepositoryTests
     {
         private readonly ArticleContentRepository sut;
 
         public ArticleContentRepositoryTests()
         {
-            string storageConnectionString = Environment.GetEnvironmentVariable("NewsBusStorageConnetionString", EnvironmentVariableTarget.Machine);
+            string storageConnectionString = Environment.GetEnvironmentVariable("NEWSBUSSTORAGECONNETIONSTRING", EnvironmentVariableTarget.Machine);
             sut = new ArticleContentRepository(storageConnectionString, "integrationtests");
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task PostContentAsync_CreateReadAndDeleteTheBlob_AllSuccessful()
         {
             string id = Guid.NewGuid().ToString();
