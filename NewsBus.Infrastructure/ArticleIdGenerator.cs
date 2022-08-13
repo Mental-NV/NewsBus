@@ -10,12 +10,12 @@ namespace NewsBus.Infrastructure
     /// </summary>
     public class ArticleIdGenerator : IArticleIdGenerator, IDisposable
     {
-        private readonly MD5CryptoServiceProvider md5;
+        private readonly MD5 md5;
         private bool isDisposed = false; // prevent redundant dispose
 
         public ArticleIdGenerator()
         {
-            md5 = new MD5CryptoServiceProvider();
+            md5 = MD5.Create();
         }
 
         /// <summary>

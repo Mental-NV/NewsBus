@@ -3,7 +3,7 @@ name: build pipeline
 on: [push, pull_request]
 
 env:
-  NEWSBUSCOSMOSDBCONNECTIONSTRING: ${{ secrets.NEWSBUSCOSMOSDBCONNECTIONSTRING }}
+  NEWSBUSCOSMOSDBCONNECTIONSTRING: '${{ secrets.NEWSBUSCOSMOSDBCONNECTIONSTRING }}'
 
 jobs:
   build:
