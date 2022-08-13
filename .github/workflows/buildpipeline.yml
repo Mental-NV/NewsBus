@@ -23,4 +23,4 @@ jobs:
       - name: Test
         run: dotnet test --no-restore --verbosity normal
         env:
-          NEWSBUSCOSMOSDBCONNECTIONSTRING: '${{ secrets.NEWSBUSCOSMOSDBCONNECTIONSTRING }}'
+          NEWSBUSCOSMOSDBCONNECTIONSTRING: ${{ secrets.NEWSBUSCOSMOSDBCONNECTIONSTRING }}
