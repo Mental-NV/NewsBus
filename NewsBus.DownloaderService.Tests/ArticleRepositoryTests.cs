@@ -13,7 +13,7 @@ namespace NewsBus.DownloaderService.Tests
     [TestClass]
     public class ArticleRepositoryTests
     {
-        private readonly string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+        private readonly string cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Machine);
         const string TestArticleDb = "TestArticleDb";
         const string TestArticleContainer = "TestArticles";
         private readonly ArticleRepository sut;

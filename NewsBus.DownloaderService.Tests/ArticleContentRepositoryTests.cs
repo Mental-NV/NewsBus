@@ -12,7 +12,7 @@ namespace NewsBus.DownloaderService.Tests
 
         public ArticleContentRepositoryTests()
         {
-            string storageConnectionString = Environment.GetEnvironmentVariable("NewsBusStorageConnetionString", EnvironmentVariableTarget.Machine);
+            string storageConnectionString = Environment.GetEnvironmentVariable("NEWSBUSSTORAGECONNETIONSTRING", EnvironmentVariableTarget.Machine);
             sut = new ArticleContentRepository(storageConnectionString, "integrationtests");
         }
 

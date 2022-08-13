@@ -17,7 +17,7 @@ namespace NewsBus.WatcherService.Tests
         public async Task GetItems_GetItemsFromDb_GotValidItems()
         {
             // Arrange
-            string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+            string cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Machine);
             var target = new RssFeedRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.RssFeedsContainer);
 
             // Act
