@@ -10,15 +10,22 @@ using NewsBus.Infrastructure;
 
 namespace NewsBus.WatcherService.Tests
 {
-    // [TestClass]
+    [TestClass]
     public class RssFeedRepositoryTests
     {
-        // FIXME: Pass environment variable from GitHub secrets
-        // [TestMethod]
+        [TestMethod]
         public async Task GetItems_GetItemsFromDb_GotValidItems()
         {
             // Arrange
-            string cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Machine);
+            string cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Process);
+            if (string.IsNullOrWhiteSpace(cosmosConnectionString))
+            {
+                cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.User);
+            }
+            if (string.IsNullOrWhiteSpace(cosmosConnectionString))
+            {
+                cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.m);
+            }
             var target = new RssFeedRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.RssFeedsContainer);
 
             // Act
