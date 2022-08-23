@@ -3,13 +3,13 @@
 version: '3.4'
 
 services:
-  newsbuswatcherservice:
+  newsbus.watcherservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 
-  newsbusdownloaderservice:
+  newsbus.downloaderservice:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:

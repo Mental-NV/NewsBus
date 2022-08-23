@@ -3,8 +3,8 @@
 version: '3.4'
 
 services:
-  newsbuswatcherservice:
-    image: newsbuswatcherservice
+  newsbus.watcherservice:
+    image: ${DOCKER_REGISTRY-}newsbuswatcherservice
     build:
       context: ../../
       dockerfile: src/NewsBus.WatcherService/Dockerfile
@@ -15,8 +15,8 @@ services:
     ports:
       - 8001:80
 
-  newsbusdownloaderservice:
-    image: newsbusdownloaderservice
+  newsbus.downloaderservice:
+    image: ${DOCKER_REGISTRY-}newsbusdownloaderservice
     build:
       context: ../../
       dockerfile: src/NewsBus.DownloaderService/Dockerfile
