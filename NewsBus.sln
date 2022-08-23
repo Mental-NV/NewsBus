@@ -3,19 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Domain", "src\NewsBus.Domain\NewsBus.Domain.csproj", "{E901A767-6488-4C79-BD91-ADFC74D195A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.Domain", "src\NewsBus.Domain\NewsBus.Domain.csproj", "{E901A767-6488-4C79-BD91-ADFC74D195A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Application", "src\NewsBus.Application\NewsBus.Application.csproj", "{AE62CBE2-B7FA-45FE-8222-EA025F642DB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.Application", "src\NewsBus.Application\NewsBus.Application.csproj", "{AE62CBE2-B7FA-45FE-8222-EA025F642DB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Infrastructure", "src\NewsBus.Infrastructure\NewsBus.Infrastructure.csproj", "{AFCF48F5-6861-4B4E-9F82-DE46F046344B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.Infrastructure", "src\NewsBus.Infrastructure\NewsBus.Infrastructure.csproj", "{AFCF48F5-6861-4B4E-9F82-DE46F046344B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService", "src\NewsBus.DownloaderService\NewsBus.DownloaderService.csproj", "{598CB1F3-A741-4B91-8783-8436CA4379BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.DownloaderService", "src\NewsBus.DownloaderService\NewsBus.DownloaderService.csproj", "{598CB1F3-A741-4B91-8783-8436CA4379BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService.Tests", "tests\NewsBus.DownloaderService.Tests\NewsBus.DownloaderService.Tests.csproj", "{D63A6132-5E31-4207-947C-58F730987BC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.DownloaderService.Tests", "tests\NewsBus.DownloaderService.Tests\NewsBus.DownloaderService.Tests.csproj", "{D63A6132-5E31-4207-947C-58F730987BC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService", "src\NewsBus.WatcherService\NewsBus.WatcherService.csproj", "{1164B850-41D0-4C99-91AB-68FEB389E09B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.WatcherService", "src\NewsBus.WatcherService\NewsBus.WatcherService.csproj", "{1164B850-41D0-4C99-91AB-68FEB389E09B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService.Tests", "tests\NewsBus.WatcherService.Tests\NewsBus.WatcherService.Tests.csproj", "{15FF5A6E-CF82-4762-9307-7AE7DB54421D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewsBus.WatcherService.Tests", "tests\NewsBus.WatcherService.Tests\NewsBus.WatcherService.Tests.csproj", "{15FF5A6E-CF82-4762-9307-7AE7DB54421D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5CEBBE13-0639-4EBC-973B-C2D52856BF17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{84872DE0-6F30-4F1C-B9A0-830211A71D9B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "deployment\docker-compose\docker-compose.dcproj", "{9ED2B84B-0F63-4202-8885-F76B27CD975A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,9 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E901A767-6488-4C79-BD91-ADFC74D195A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -114,5 +117,32 @@ Global
 		{15FF5A6E-CF82-4762-9307-7AE7DB54421D}.Release|x64.Build.0 = Release|Any CPU
 		{15FF5A6E-CF82-4762-9307-7AE7DB54421D}.Release|x86.ActiveCfg = Release|Any CPU
 		{15FF5A6E-CF82-4762-9307-7AE7DB54421D}.Release|x86.Build.0 = Release|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Debug|x64.Build.0 = Debug|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Debug|x86.Build.0 = Debug|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Release|x64.ActiveCfg = Release|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Release|x64.Build.0 = Release|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Release|x86.ActiveCfg = Release|Any CPU
+		{9ED2B84B-0F63-4202-8885-F76B27CD975A}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E901A767-6488-4C79-BD91-ADFC74D195A8} = {5CEBBE13-0639-4EBC-973B-C2D52856BF17}
+		{AE62CBE2-B7FA-45FE-8222-EA025F642DB8} = {5CEBBE13-0639-4EBC-973B-C2D52856BF17}
+		{AFCF48F5-6861-4B4E-9F82-DE46F046344B} = {5CEBBE13-0639-4EBC-973B-C2D52856BF17}
+		{598CB1F3-A741-4B91-8783-8436CA4379BD} = {5CEBBE13-0639-4EBC-973B-C2D52856BF17}
+		{D63A6132-5E31-4207-947C-58F730987BC0} = {84872DE0-6F30-4F1C-B9A0-830211A71D9B}
+		{1164B850-41D0-4C99-91AB-68FEB389E09B} = {5CEBBE13-0639-4EBC-973B-C2D52856BF17}
+		{15FF5A6E-CF82-4762-9307-7AE7DB54421D} = {84872DE0-6F30-4F1C-B9A0-830211A71D9B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD79F560-45FA-4C6C-8DBF-C342BBBC790B}
 	EndGlobalSection
 EndGlobal
