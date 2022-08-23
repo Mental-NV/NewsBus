@@ -11,16 +11,16 @@ USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-focal AS build
 WORKDIR /src
-COPY ["NewsBus.DownloaderService/NewsBus.DownloaderService.csproj", "NewsBus.DownloaderService/"]
-RUN dotnet restore "NewsBus.DownloaderService/NewsBus.DownloaderService.csproj"
+COPY ["src/NewsBus.WatcherService/NewsBus.WatcherService.csproj", "src/NewsBus.WatcherService/"]
+RUN dotnet restore "src/NewsBus.WatcherService/NewsBus.WatcherService.csproj"
 COPY . .
-WORKDIR "/src/NewsBus.DownloaderService"
-RUN dotnet build "NewsBus.DownloaderService.csproj" -c Release -o /app/build
+WORKDIR "/src/src/NewsBus.WatcherService"
+RUN dotnet build "NewsBus.WatcherService.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "NewsBus.DownloaderService.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "NewsBus.WatcherService.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "NewsBus.DownloaderService.dll"]
+ENTRYPOINT ["dotnet", "NewsBus.WatcherService.dll"]

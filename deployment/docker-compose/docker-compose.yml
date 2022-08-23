@@ -6,8 +6,8 @@ services:
   newsbuswatcherservice:
     image: newsbuswatcherservice
     build:
-      context: .
-      dockerfile: NewsBus.WatcherService/Dockerfile
+      context: ../../
+      dockerfile: src/NewsBus.WatcherService/Dockerfile
     environment:
       - "NewsBusCosmosDbConnectionString=${NewsBusCosmosDbConnectionString}"
       - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
@@ -18,8 +18,8 @@ services:
   newsbusdownloaderservice:
     image: newsbusdownloaderservice
     build:
-      context: .
-      dockerfile: NewsBus.DownloaderService/Dockerfile
+      context: ../../
+      dockerfile: src/NewsBus.DownloaderService/Dockerfile
     environment:
       - "NewsBusCosmosDbConnectionString=${NewsBusCosmosDbConnectionString}"
       - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"

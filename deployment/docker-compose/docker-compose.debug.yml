@@ -4,20 +4,12 @@ version: '3.4'
 
 services:
   newsbuswatcherservice:
-    image: newsbuswatcherservice
-    build:
-      context: .
-      dockerfile: NewsBus.WatcherService/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 
   newsbusdownloaderservice:
-    image: newsbusdownloaderservice
-    build:
-      context: .
-      dockerfile: NewsBus.DownloaderService/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
