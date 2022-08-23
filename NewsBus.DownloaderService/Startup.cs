@@ -37,9 +37,9 @@ namespace NewsBus.DownloaderService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewsBus.DownloaderService", Version = "v1" });
             });
 
-            string queueConnectionString = Configuration["NewsBusQueueConnectionString"];
-            string cosmosConnectionString = Configuration["NewsBusCosmosDbConnectionString"];
-            string storageConnectionString = Configuration["NewsBusStorageConnetionString"];
+            string queueConnectionString = Configuration["NEWSBUSQUEUECONNECTIONSTRING"];
+            string cosmosConnectionString = Configuration["NEWSBUSCOSMOSDBCONNECTIONSTRING"];
+            string storageConnectionString = Configuration["NEWSBUSSTORAGECONNETIONSTRING"];
 
             services.AddSingleton<IArticleRepository, ArticleRepository>(
                 sp => new ArticleRepository(cosmosConnectionString, Constants.NewsBusDatabase, Constants.ArticlesContainer)

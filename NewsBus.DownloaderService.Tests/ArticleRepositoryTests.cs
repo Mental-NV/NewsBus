@@ -10,10 +10,10 @@ namespace NewsBus.DownloaderService.Tests
     /// <summary>
     /// Integration tests for the article repository
     /// </summary>
-    [TestClass]
+    // [TestClass]
     public class ArticleRepositoryTests
     {
-        private readonly string cosmosConnectionString = Environment.GetEnvironmentVariable("NewsBusCosmosDbConnectionString", EnvironmentVariableTarget.Machine);
+        private readonly string cosmosConnectionString = Environment.GetEnvironmentVariable("NEWSBUSCOSMOSDBCONNECTIONSTRING", EnvironmentVariableTarget.Machine);
         const string TestArticleDb = "TestArticleDb";
         const string TestArticleContainer = "TestArticles";
         private readonly ArticleRepository sut;
@@ -23,7 +23,7 @@ namespace NewsBus.DownloaderService.Tests
             sut = new ArticleRepository(cosmosConnectionString, TestArticleDb, TestArticleContainer);
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task PostArticleAsync_PostAndRead_Success()
         {
             // Arrange
@@ -46,7 +46,7 @@ namespace NewsBus.DownloaderService.Tests
             }
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task ExistArticleAsync_PostAndCheckExisting_Success()
         {
             // Arrange
@@ -69,7 +69,7 @@ namespace NewsBus.DownloaderService.Tests
             }
         }
 
-        [TestMethod]
+        // [TestMethod]
         public async Task PutArticleAsync_PostPutAndReadV2_Success()
         {
             Article expected = GenerateArticle();
