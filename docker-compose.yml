@@ -13,8 +13,7 @@ services:
       - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
       - "NewsBusStorageConnetionString=${NewsBusStorageConnetionString}"
     ports:
-      - 5002:5000
-      - 5003:5001
+      - 8001:80
 
   newsbusdownloaderservice:
     image: newsbusdownloaderservice
@@ -26,5 +25,4 @@ services:
       - "NewsBusQueueConnectionString=${NewsBusQueueConnectionString}"
       - "NewsBusStorageConnetionString=${NewsBusStorageConnetionString}"
     ports:
-      - 5000:5000
-      - 5001:5001
+      - 8000:80
