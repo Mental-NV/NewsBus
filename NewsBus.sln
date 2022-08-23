@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Domain", "NewsBus.Domain\NewsBus.Domain.csproj", "{E901A767-6488-4C79-BD91-ADFC74D195A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Domain", "src\NewsBus.Domain\NewsBus.Domain.csproj", "{E901A767-6488-4C79-BD91-ADFC74D195A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Application", "NewsBus.Application\NewsBus.Application.csproj", "{AE62CBE2-B7FA-45FE-8222-EA025F642DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Application", "src\NewsBus.Application\NewsBus.Application.csproj", "{AE62CBE2-B7FA-45FE-8222-EA025F642DB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Infrastructure", "NewsBus.Infrastructure\NewsBus.Infrastructure.csproj", "{AFCF48F5-6861-4B4E-9F82-DE46F046344B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.Infrastructure", "src\NewsBus.Infrastructure\NewsBus.Infrastructure.csproj", "{AFCF48F5-6861-4B4E-9F82-DE46F046344B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService", "NewsBus.DownloaderService\NewsBus.DownloaderService.csproj", "{598CB1F3-A741-4B91-8783-8436CA4379BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService", "src\NewsBus.DownloaderService\NewsBus.DownloaderService.csproj", "{598CB1F3-A741-4B91-8783-8436CA4379BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService.Tests", "NewsBus.DownloaderService.Tests\NewsBus.DownloaderService.Tests.csproj", "{D63A6132-5E31-4207-947C-58F730987BC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.DownloaderService.Tests", "tests\NewsBus.DownloaderService.Tests\NewsBus.DownloaderService.Tests.csproj", "{D63A6132-5E31-4207-947C-58F730987BC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService", "NewsBus.WatcherService\NewsBus.WatcherService.csproj", "{1164B850-41D0-4C99-91AB-68FEB389E09B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService", "src\NewsBus.WatcherService\NewsBus.WatcherService.csproj", "{1164B850-41D0-4C99-91AB-68FEB389E09B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService.Tests", "NewsBus.WatcherService.Tests\NewsBus.WatcherService.Tests.csproj", "{15FF5A6E-CF82-4762-9307-7AE7DB54421D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsBus.WatcherService.Tests", "tests\NewsBus.WatcherService.Tests\NewsBus.WatcherService.Tests.csproj", "{15FF5A6E-CF82-4762-9307-7AE7DB54421D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
