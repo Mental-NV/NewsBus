@@ -1,5 +1,6 @@
 # NewsBus
 ![Build workflow](https://github.com/Mental-NV/NewsBus/actions/workflows/buildpipeline.yml/badge.svg)
+![Build workflow](https://github.com/Mental-NV/NewsBus/actions/workflows/ci.yml/badge.svg)
 
 NewsBus is a news aggregation portal, similar to https://feedly.com/.
 It is a sample project that illustrates how to achive a scallable architecture by using the following technologies:
@@ -8,7 +9,8 @@ It is a sample project that illustrates how to achive a scallable architecture b
 * Azure Blob Storage
 * ASP.NET Core
 * Docker
-* [To be done] Azure Kubernetes Service
+* Docker Compose
+* Kubenetes
 ### Projects description
 * NewsBus.Domain — domain layer
 * NewsBus.Application — business layer
