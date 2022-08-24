@@ -135,3 +135,7 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+# YAML secrets
+*[sS][eE][cC][rR][eE][tT]*.[yY][aA][mM][lL]
+*[sS][eE][cC][rR][eE][tT]*.[yY][mM][lL]

@@ -4,7 +4,7 @@ version: '3.4'
 
 services:
   newsbus.watcherservice:
-    image: ${DOCKER_REGISTRY-}newsbuswatcherservice
+    image: mental001/newsbuswatcherservice
     build:
       context: ../../
       dockerfile: src/NewsBus.WatcherService/Dockerfile
@@ -16,7 +16,7 @@ services:
       - 8001:80
 
   newsbus.downloaderservice:
-    image: ${DOCKER_REGISTRY-}newsbusdownloaderservice
+    image: mental001/newsbusdownloaderservice
     build:
       context: ../../
       dockerfile: src/NewsBus.DownloaderService/Dockerfile
