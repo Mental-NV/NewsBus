@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: downloader-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: downloader
+  template:
+    metadata:
+      labels:
+        app: downloader
+    spec:
+      containers:
+        - name: downloader
+          image: rundevopsacr.azurecr.io/newsbusdownloaderservice:v1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: NewsBusCosmosDbConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: newsbus-secret
+                  key: NewsBusCosmosDbConnectionString
+            - name: NewsBusQueueConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: newsbus-secret
+                  key: NewsBusQueueConnectionString
+            - name: NewsBusStorageConnetionString
+              valueFrom:
+                secretKeyRef:
+                  name: newsbus-secret
+                  key: NewsBusStorageConnetionString
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: downloader-service
+spec:
+  selector:
+    app: downloader
+  ports:
+    - protocol: TCP
+      port: 80
+
+
